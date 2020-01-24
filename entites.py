@@ -1,7 +1,13 @@
 class Commune(object):
     
-    def __init__(self, nom):
+    def __init__(self, nom, siren, code_insee, code_epci):
         self.nom = nom
+        self.siren = siren
+        self.code_insee = code_insee
+        self.code_epci = code_epci
+
+    # Comptes consolidés : 
+    # https://forum.datafin.fr/t/comptes-consolides-des-communes-2012-2018/453
 
 
 class EPCI(object):
@@ -22,7 +28,7 @@ class EPCI(object):
         self._a_fiscalite_propre = a_fiscalite_propre
 
 
-class Département(object):
+class Departement(object):
 
     # Est aussi une collectivité territoriale
 
