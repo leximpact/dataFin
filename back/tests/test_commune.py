@@ -11,7 +11,7 @@ from configparser import RawConfigParser
 def test_comptes_consolides():
     # Chargement de la configuration
     config_parser = RawConfigParser()
-    found = config_parser.read('./config.ini')
+    found = config_parser.read('./back/config.ini')
     csv_comptes_consolides = config_parser.get('communes', 'csv_comptes_consolides')
     
     # Chargement des données

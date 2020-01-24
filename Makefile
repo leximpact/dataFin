@@ -3,8 +3,8 @@
 .PHONY: install test
 
 install:
-	pip install -r requirements.txt
+	pip install -r back/requirements.txt
 
 test:
-	pytest tests/*py
+	pytest back/tests/*py
 
