@@ -6,9 +6,10 @@ class Commune(object):
         self.code_insee = code_insee
         self.code_epci = code_epci
 
-    # Comptes consolidés : 
-    # https://forum.datafin.fr/t/comptes-consolides-des-communes-2012-2018/453
-
+    def dsr(self, nombre_habitants, pfi_habitant):
+        # pages 6 et 7
+        # moins de 10000 habitants > sinon non
+        # pfi/habitant < 2 * (pfi moyen toutes communes confondues de même strate démographique/habitant)
 
 class EPCI(object):
     
