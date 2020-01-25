@@ -64,6 +64,7 @@ def eligible_dsr(max_nombre_habitants = 10000, ponderation = 2):
 if __name__ == '__main__':
     eligibilite_par_code_insee = eligible_dsr(max_nombre_habitants = 10000, ponderation = 2)
     print(eligibilite_par_code_insee)
+    
     indexes_communes_eligibles = np.where(eligibilite_par_code_insee == True)[0]
     print("#Communes éligibles DSR péréquation : ", len(indexes_communes_eligibles))
     print("Liste communes éligibles : ", indexes_communes_eligibles)
