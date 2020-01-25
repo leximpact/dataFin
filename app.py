@@ -4,8 +4,10 @@ import pandas
 import os
 import json
 from flask import Flask, render_template
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def hello_world():
@@ -18,6 +20,16 @@ def communes_polygons():
         data = json.load(json_file)
     print(data.keys())
     return json.dumps(data['features'])
+
+@app.route('/dotations/dsr/eligebilite', methods=['GET', 'POST'])
+def communes_eligibles():
+    return {
+        "communes": {
+            "eligibles": 6000,
+            "nouvelles": 11,
+            "anciennes": 4,
+        }
+    }
 
 
 # communes_criteres_repartition_2019 = pandas.read_csv(
