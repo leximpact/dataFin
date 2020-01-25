@@ -18,7 +18,7 @@ def carte_communes_eligibles_dsr_perequation(eligibilite_par_code_insee):
     geojson.plot(column="trueness",legend = True)
 
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    path_carte = "./static/eligibilite_dsr_perequation_{}.png".format(timestr)
+    path_carte = "static/eligibilite_dsr_perequation_{}.png".format(timestr)
     plt.savefig(path_carte)
     # plt.show()
 
