@@ -1,4 +1,5 @@
 import time
+import numpy as np
 import pandas as pd
 import geopandas as gp
 import matplotlib.pyplot as plt
@@ -15,12 +16,19 @@ def carte_communes_eligibles_dsr_perequation(eligibilite_par_code_insee):
         index=range(len(geojson["insee"]))))
 
     deg2km = 111  # https://ocefpaf.github.io/python4oceanographers/blog/2015/03/30/geo_pandas/
+    
+    # X_detail = np.linspace(-5, 5, 1024)
+    # Y_detail = np.sinc(X_detail)
+    
     geojson.plot(column="trueness",legend = True)
 
     timestr = time.strftime("%Y%m%d-%H%M%S")
     path_carte = "static/eligibilite_dsr_perequation_{}.png".format(timestr)
-    plt.savefig(path_carte)
+    
+    plt.xlim(-5.5, 10.5)
+    plt.ylim(41, 51.5)
     # plt.show()
+    plt.savefig(path_carte)
 
     return path_carte
 

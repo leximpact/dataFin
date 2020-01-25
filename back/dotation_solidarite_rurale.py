@@ -2,8 +2,10 @@ import os
 import pandas
 import numpy as np
 
-from back.parametres.potentiel_financier_moyen import  potentiel_financier_moyen
-
+try:
+    from back.parametres.potentiel_financier_moyen import  potentiel_financier_moyen
+except:
+    from parametres.potentiel_financier_moyen import  potentiel_financier_moyen
 
 def rang_strate_par_commune(nombre_habitants):
     # Prépare le parcours des strates de la plus à la moins peuplée.
