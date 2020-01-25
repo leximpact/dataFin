@@ -42,7 +42,7 @@ def eligible_dsr(max_nombre_habitants = 10000, ponderation = 2):
     communes_criteres_repartition_2019 = pandas.read_csv(
         csv_communes_criteres_repartition,
         decimal=",")
-    # print(communes_criteres_repartition_2019.keys())
+    print(communes_criteres_repartition_2019.keys())
 
     assert len(communes_criteres_repartition_2019["Informations générales - Nom de la commune"]) == 35056
 
@@ -52,13 +52,18 @@ def eligible_dsr(max_nombre_habitants = 10000, ponderation = 2):
     pfi_habitant = communes_criteres_repartition_2019[
         "Potentiel fiscal et financier des communes - Potentiel financier par habitant"
         ]
-    # print(pfi_habitant)
-    return dotation_solidarite_rurale(nombre_habitants, pfi_habitant, max_nombre_habitants, ponderation)
+    codes_insee = communes_criteres_repartition_2019[
+        "Informations générales - Code INSEE de la commune"
+    ]
+    
+    eligibilite = dotation_solidarite_rurale(nombre_habitants, pfi_habitant, max_nombre_habitants, ponderation)
+    return pandas.Series(data=eligibilite.values, index=codes_insee.values)
 
 
 # pour tester
 if __name__ == '__main__':
-    eligibilite_par_commune = eligible_dsr(max_nombre_habitants = 10000, ponderation = 2)
-    indexes_communes_eligibles = np.where(eligibilite_par_commune == True)[0]
+    eligibilite_par_code_insee = eligible_dsr(max_nombre_habitants = 10000, ponderation = 2)
+    print(eligibilite_par_code_insee)
+    indexes_communes_eligibles = np.where(eligibilite_par_code_insee == True)[0]
     print("#Communes éligibles DSR péréquation : ", len(indexes_communes_eligibles))
     print("Liste communes éligibles : ", indexes_communes_eligibles)
