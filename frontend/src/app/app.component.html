@@ -1,0 +1,21 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>Dotation de Solidarité Rurale (DSR) - fraction péréquation</span>
+    </mat-toolbar>
+    <div class="grid-container">
+      <div class="row">
+        <div class="col">
+          <app-dsr-p-form [variables]="variables"></app-dsr-p-form>
+        </div>
+        <div class="col">
+          <div style="text-align: right; padding-bottom: 10px">
+            <button mat-raised-button color="primary" type="button" (click)="simulate()">Simuler</button>
+          </div>
+          <app-result-card [communes]="communes"></app-result-card>
+          <app-map-card class="mt-20"></app-map-card>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

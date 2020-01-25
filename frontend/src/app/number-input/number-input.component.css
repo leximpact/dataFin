@@ -1,0 +1,16 @@
+.initial-value {
+  text-decoration: line-through;
+  font-weight: bold;
+}
+
+.number-input {
+  margin-left: 5px;
+}
+
+.blue {
+  color: blue;
+}
+
+input {
+  font-weight: bold;
+}

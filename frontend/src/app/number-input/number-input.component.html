@@ -1,0 +1,4 @@
+<span *ngIf="isModified()" class="initial-value">{{ initialValue }}</span>
+<mat-form-field class="number-input" [ngStyle]="{ 'width.px': width }">
+  <input matInput [ngModel]="value" (ngModelChange)="valueChange.emit($event)" type="number" [class.blue]="isModified()">
+</mat-form-field>

@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-content>
+    <h3 style="margin-bottom: 0;">Eligibilité des communes</h3>
+    <div *ngIf="communes === 'pending'">
+      Simulation en cours...
+     </div>
+     <div *ngIf="communes === 'failure'">
+      Une erreur est survenue. Merci redémarrer une simulation.
+     </div>
+    <div class="row" *ngIf="communes !== null && communes !== 'pending' && communes !== 'failure'">
+      <div style="margin-right: 15px">
+        <h1 class="initial-value">5000</h1>
+      </div>
+      <div class="col">
+        <h1 class="blue">{{ communes.eligibles | number }}</h1>
+        <strong class="blue">{{ communes.nouvelles | number }}</strong> nouvellement éligibles
+        <br>
+        <strong class="blue">{{ communes.anciennes | number }}</strong> communes désormais non éligibles
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>
