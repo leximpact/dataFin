@@ -10,7 +10,7 @@ from dotation_solidarite_rurale import eligible_dsr
 def carte_communes_eligibles_dsr_perequation(eligibilite_par_code_insee):
     geojson = gp.read_file('./back/inputs/communes-20190101.json')
 
-    john=[("1) Éligible" if eligibilite_par_code_insee[str(geojson["insee"][k])] else "2) Non éligible") if str(geojson["insee"][k]) in eligibilite_par_code_insee else "3) Éligible ?" for k in range(len(geojson["insee"]))]
+    john=[("1) Éligible" if eligibilite_par_code_insee[str(geojson["insee"][k])] else "2) Non éligible") if str(geojson["insee"][k]) in eligibilite_par_code_insee else "1) Éligible" for k in range(len(geojson["insee"]))]
     geojson=geojson.assign(trueness=pd.Series(
         data=john, 
         index=range(len(geojson["insee"]))))
