@@ -1,3 +1,5 @@
+# À exécuter dans un notebook
+
 import folium
 from IPython.display import display
 

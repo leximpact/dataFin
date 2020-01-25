@@ -1,6 +1,17 @@
 from dotation_solidarite_rurale import dotation_solidarite_rurale
 
 import pandas
+import os
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    print(os.listdir())
+    return render_template('index.html')
+
+
 
 communes_criteres_repartition_2019 = pandas.read_csv(
     './back/inputs/2019-communes-criteres-repartition.csv',
@@ -24,3 +35,7 @@ print(dotation_solidarite_rurale(nombre_habitants, pfi_habitant))
 # c = Commune('c', 1234, 1234, 1234)
 # dotation_solidarite_rurale = c.dotation_solidarite_rurale(1500, 1500)
 # print("éligible ?", dotation_solidarite_rurale)
+
+
+if __name__ == '__main__':
+   app.run()
