@@ -11,14 +11,6 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
   async simulate(variables: VariablesDSR): Promise<{ communes: Communes }> {
-    console.log(variables);
-    // return this.http.post<{ communes: Communes }>('/dotations/dsr/eligebilite', variables).toPromise();
-    return {
-      communes: {
-        eligibles: 5000,
-        nouvelles: 45,
-        anciennes: 22,
-      }
-    };
+    return this.http.post<{ communes: Communes }>('http://localhost:5000/dotations/dsr/eligebilite', variables).toPromise();
   }
 }
