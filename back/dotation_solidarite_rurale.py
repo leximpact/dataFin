@@ -25,7 +25,7 @@ def dotation_solidarite_rurale(nombre_habitants, pfi_habitant, max_nombre_habita
     # pages 6 et 7
     
     # strictement moins de max_nombre_habitants habitants, sinon pas de dsr
-    condition_nombre_habitants = (nombre_habitants >= max_nombre_habitants)
+    condition_nombre_habitants = (nombre_habitants < max_nombre_habitants)
 
     montants_potentiels_financiers_moyens = list(potentiel_financier_moyen['brackets']['2019-01-01'].values())
     get_pfi_moyen = lambda rang_strate: montants_potentiels_financiers_moyens[rang_strate]
@@ -38,11 +38,11 @@ def dotation_solidarite_rurale(nombre_habitants, pfi_habitant, max_nombre_habita
 
 def eligible_dsr(max_nombre_habitants = 10000, ponderation = 2):
     csv_communes_criteres_repartition = './back/inputs/2019-communes-criteres-repartition.csv'
-    print(os.path.abspath(csv_communes_criteres_repartition))
+    # print(os.path.abspath(csv_communes_criteres_repartition))
     communes_criteres_repartition_2019 = pandas.read_csv(
         csv_communes_criteres_repartition,
         decimal=",")
-    print(communes_criteres_repartition_2019.keys())
+    # print(communes_criteres_repartition_2019.keys())
 
     assert len(communes_criteres_repartition_2019["Informations générales - Nom de la commune"]) == 35056
 
@@ -57,14 +57,14 @@ def eligible_dsr(max_nombre_habitants = 10000, ponderation = 2):
     ]
     
     eligibilite = dotation_solidarite_rurale(nombre_habitants, pfi_habitant, max_nombre_habitants, ponderation)
-    print(len(eligibilite),  "09034" in codes_insee.values)
+    # print(len(eligibilite),  "09034" in codes_insee.values)
     return pandas.Series(data=eligibilite.values, index=[str(k) for k in codes_insee.values])
 
 
 # pour tester
 if __name__ == '__main__':
     eligibilite_par_code_insee = eligible_dsr(max_nombre_habitants = 10000, ponderation = 2)
-    print(eligibilite_par_code_insee)
+    # print(eligibilite_par_code_insee)
 
     indexes_communes_eligibles = np.where(eligibilite_par_code_insee == True)[0]
     print("#Communes éligibles DSR péréquation : ", len(indexes_communes_eligibles))
