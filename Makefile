@@ -8,5 +8,6 @@ install:
 test:
 	pytest back/tests/*py
 
-# python -m http.server
-# python app.py pour runner l'index.html sur http://localhost:5000
+run:
+	@echo "API web servie en http://localhost:5000..."
+	python app.py
