@@ -1,7 +1,9 @@
 
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_cors import CORS
+
+import numpy as np
 
 from back.dotation_solidarite_rurale import eligible_dsr
 
@@ -24,11 +26,17 @@ def communes_polygons():
 
 @app.route('/dotations/dsr/eligebilite', methods=['GET', 'POST'])
 def communes_eligibles():
+    seuilHabitants = request.json.get('seuilHabitants')
+    ponderation = request.json.get('ponderation')
+    eligibilite_par_code_insee = eligible_dsr(max_nombre_habitants = seuilHabitants, ponderation = ponderation)
+    indexes_communes_eligibles = np.where(eligibilite_par_code_insee == True)[0]
+
     return {
+        "path": "https://files.slack.com/files-tmb/TSRA44X0E-FT65P8XNJ-a708ccf600/figure_toute_bleue_720.png",
         "communes": {
-            "eligibles": 6000,
-            "nouvelles": 11,
-            "anciennes": 4,
+            "eligibles": len(indexes_communes_eligibles),
+            "nouvelles": 0,
+            "anciennes": 0,
         }
     }
 

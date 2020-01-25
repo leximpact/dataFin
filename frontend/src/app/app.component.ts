@@ -10,6 +10,7 @@ import { BackendService } from './backend.service';
 })
 export class AppComponent {
   communes: Communes | 'pending' | 'failure' | null = null;
+  path: string | null = null;
 
   variables: VariablesDSR = {
     seuilHabitants: 10000,
@@ -21,8 +22,9 @@ export class AppComponent {
   async simulate() {
     try {
       this.communes = 'pending';
-      const { communes } =  await this.backend.simulate(this.variables);
+      const { communes, path } =  await this.backend.simulate(this.variables);
       this.communes = communes;
+      this.path = path;
     } catch (error) {
       this.communes = 'failure';
     }

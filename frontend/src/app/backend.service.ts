@@ -10,7 +10,7 @@ export class BackendService {
 
   constructor(private http: HttpClient) { }
 
-  async simulate(variables: VariablesDSR): Promise<{ communes: Communes }> {
-    return this.http.post<{ communes: Communes }>('http://localhost:5000/dotations/dsr/eligebilite', variables).toPromise();
+  async simulate(variables: VariablesDSR): Promise<{ communes: Communes, path: string }> {
+    return this.http.post<{ communes: Communes, path: string }>('http://localhost:5000/dotations/dsr/eligebilite', variables).toPromise();
   }
 }

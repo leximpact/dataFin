@@ -13,7 +13,7 @@
             <button mat-raised-button color="primary" type="button" (click)="simulate()">Simuler</button>
           </div>
           <app-result-card [communes]="communes"></app-result-card>
-          <app-map-card class="mt-20"></app-map-card>
+          <app-map-card [path]="path" class="mt-20"></app-map-card>
         </div>
       </div>
     </div>
