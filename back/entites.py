@@ -16,7 +16,7 @@ class Commune(object):
         # moins de 10000 habitants > sinon non
         dsr_max_nombre_habitants = 10000
         if nombre_habitants >= dsr_max_nombre_habitants:
-            return 0
+            return False
         
         for seuil_habitants in reversed(list(potentiel_financier_moyen['brackets']['2019-01-01'].keys())):
             if nombre_habitants >= int(seuil_habitants):
