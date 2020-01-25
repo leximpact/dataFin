@@ -10,7 +10,7 @@ from dotation_solidarite_rurale import eligible_dsr
 def carte_communes_eligibles_dsr_perequation(eligibilite_par_code_insee):
     geojson = gp.read_file('./back/inputs/communes-20190101.json')
 
-    john=[eligibilite_par_code_insee[str(geojson["insee"][k])] if str(geojson["insee"][k]) in eligibilite_par_code_insee else -1 for k in range(len(geojson["insee"]))]
+    john=[("1) Éligible" if eligibilite_par_code_insee[str(geojson["insee"][k])] else "2) Non éligible") if str(geojson["insee"][k]) in eligibilite_par_code_insee else "3) Éligible ?" for k in range(len(geojson["insee"]))]
     geojson=geojson.assign(trueness=pd.Series(
         data=john, 
         index=range(len(geojson["insee"]))))
@@ -20,7 +20,9 @@ def carte_communes_eligibles_dsr_perequation(eligibilite_par_code_insee):
     # X_detail = np.linspace(-5, 5, 1024)
     # Y_detail = np.sinc(X_detail)
     
-    geojson.plot(column="trueness",legend = True)
+    leg_kwds={'loc': 'lower left'}
+    # 'fancybox':True, 'framealpha':1, 'shadow':True, 'borderpad':1
+    geojson.plot(column="trueness", legend=True, legend_kwds=leg_kwds)
 
     timestr = time.strftime("%Y%m%d-%H%M%S")
     path_carte = "static/eligibilite_dsr_perequation_{}.png".format(timestr)
@@ -28,6 +30,7 @@ def carte_communes_eligibles_dsr_perequation(eligibilite_par_code_insee):
     plt.xlim(-5.5, 10.5)
     plt.ylim(41, 51.5)
     # plt.show()
+
     plt.savefig(path_carte)
 
     return path_carte
