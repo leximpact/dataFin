@@ -42,3 +42,10 @@ mat-card-header {
   margin-right: -15px;
   background-color: #f3f3f3;
 }
+
+h3>span{
+  font-size: initial;
+  font-weight: initial;
+  float: right;
+  color: lightgrey
+}
