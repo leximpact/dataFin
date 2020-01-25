@@ -2,6 +2,7 @@ from back.dotation_solidarite_rurale import dotation_solidarite_rurale
 
 import pandas
 import os
+import json
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -11,6 +12,12 @@ def hello_world():
     print(os.listdir())
     return render_template('index.html')
 
+@app.route('/communes_polygons')
+def communes_polygons():
+    with open('./back/inputs/communes-20190101.json') as json_file:
+        data = json.load(json_file)
+    print(data.keys())
+    return json.dumps(data['features'])
 
 
 # communes_criteres_repartition_2019 = pandas.read_csv(
@@ -38,4 +45,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-   app.run()
+   app.run(debug=True)
