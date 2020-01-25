@@ -25,7 +25,7 @@ def dotation_solidarite_rurale(nombre_habitants, pfi_habitant, max_nombre_habita
     # pages 6 et 7
     
     # strictement moins de max_nombre_habitants habitants, sinon pas de dsr
-    condition_nombre_habitants = (nombre_habitants >= max_nombre_habitants)
+    condition_nombre_habitants = (nombre_habitants < max_nombre_habitants)
 
     montants_potentiels_financiers_moyens = list(potentiel_financier_moyen['brackets']['2019-01-01'].values())
     get_pfi_moyen = lambda rang_strate: montants_potentiels_financiers_moyens[rang_strate]
