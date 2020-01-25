@@ -1,0 +1,53 @@
+<mat-card class="shipping-card">
+  <mat-card-header>
+    <mat-card-title>DOTATION DE SOLIDARITÉ RURALE (DSR)</mat-card-title>
+    <mat-card-subtitle>Code générale des collectivités territoriales</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+          <h3>Périmètre des communes éligibles</h3>
+          La dotation de solidarité rurale est attribuée : 
+          <ul>
+            <li>aux communes de moins de
+              <app-number-input [initialValue]="seuilHabitantsInitial" [width]="54" [(value)]="variables.seuilHabitants"></app-number-input>
+              habitants
+            </li>
+            <li>et à certains chefs-lieux d'arrondissement de moins de 20 000 habitants </li>
+          </ul>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                pour tenir compte, d'une part, des charges [...].
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>
+              pour tenir compte, d'une part, des charges qu'ils supportent pour contribuer au
+              maintien de la vie sociale en milieu rural, d'autre part, de l'insuffisance de
+              leurs ressources fiscales.
+            </p>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Cette dotation comporte trois fractions [...].
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>
+              Cette dotation comporte trois fractions. La variation annuelle de la dotation de
+              solidarité rurale est répartie par le comité des finances locales entre ces trois
+              fractions.
+            </p>
+          </mat-expansion-panel>
+          <hr>
+          <h3>Critère d'éligibilité pour la deuxième fraction</h3>
+          <div class="justify">
+            La deuxième fraction de la dotation de solidarité rurale est attribuée aux communes dont
+            le potentiel financier par habitant, tel qu'il est défini à l'article L. 2334-4, est inférieur
+            à <app-number-input [initialValue]="ponderationInitiale" [width]="22" [(value)]="variables.ponderation"></app-number-input>
+            fois le potentiel financier moyen par habitant des communesappartenant au même groupe démographique.
+          </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

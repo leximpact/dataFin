@@ -1,0 +1,44 @@
+.full-width {
+  width: 100%;
+}
+
+.shipping-card {
+  min-width: 120px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.justify {
+  text-align: justify;
+}
+
+mat-expansion-panel {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+mat-expansion-panel:last-of-type {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+mat-card-header {
+  margin-top: -15px !important;
+  padding-top: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  background-color: #f3f3f3;
+}
