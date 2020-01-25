@@ -29,5 +29,5 @@ deg2km = 111  # https://ocefpaf.github.io/python4oceanographers/blog/2015/03/30/
 
 print(geojson.__dict__)
 
-geojson.plot(column="trueness")
+geojson.plot(column="trueness",legend = True)
 plt.show()
