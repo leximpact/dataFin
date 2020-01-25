@@ -1,2 +1,5 @@
 pandas==0.25.3
+geopandas==0.6.2
+descartes==1.1.0
+matplotlib==3.1.2
 pytest==5.3.4
